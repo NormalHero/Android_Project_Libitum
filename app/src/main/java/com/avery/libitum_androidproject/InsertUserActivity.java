@@ -5,47 +5,34 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.EditText;
 
-public class introActivity extends AppCompatActivity {
-
-
+public class InsertUserActivity extends AppCompatActivity {
+    EditText etUserPw,etUserId, etCkPw;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_intro);
+        setContentView(R.layout.activity_insert_user);
 
+        etUserPw = findViewById(R.id.etUserPw);
+        etUserId = findViewById(R.id.etUserId);
+        etCkPw = findViewById(R.id.etCkPw);
 
 
         findViewById(R.id.btnActionInsertUser).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // 로그인 실패시 화면 유지
-
-
-                //로그인 성공시
-                Intent intent = new Intent(introActivity.this, MainActivity.class);
-                startActivity(intent);
+                // DB에 회원정보 연결하기
+                // etUserId, etCkPw가 서로 일치 하지 않다면, 또는 null값 이라면 버튼 비활성화
             }
         });
 
         findViewById(R.id.btnLoginGo).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // 회원가입 구현
-            }
-        });
-
-        findViewById(R.id.btnLoginGo).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(introActivity.this,InsertUserActivity.class);
+                Intent intent = new Intent(InsertUserActivity.this, introActivity.class);
                 startActivity(intent);
             }
         });
-
-
-
-
-
     }
 }

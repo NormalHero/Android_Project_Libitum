@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/mi_postList"
+        android:icon="@drawable/ic_postlist"
+        android:title="postlist" />
+    <item
+        android:id="@+id/mi_insertPost"
+        android:icon="@drawable/ic_insertpost"
+        android:title="insertpost" />
+    <item
+        android:id="@+id/mi_myFeed"
+        android:icon="@drawable/ic_myfeed"
+        android:title="myfeed" />
+</menu>

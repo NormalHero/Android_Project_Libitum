@@ -4,9 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ff6b6b"
+    android:background="#FF6B6B"
+    android:gravity="top"
     android:orientation="vertical"
-    tools:context=".introActivity">
+    tools:context=".InsertUserActivity">
+
 
     <ImageView
         android:id="@+id/ivLogo"
@@ -25,8 +27,8 @@
         android:layout_gravity="center_horizontal"
         android:layout_margin="5dp"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="ID" />
+        android:hint="ID"
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/etUserPw"
@@ -35,10 +37,28 @@
         android:layout_gravity="center_horizontal"
         android:layout_margin="5dp"
         android:ems="10"
-        android:inputType="textPassword"
-        android:hint="PW" />
+        android:hint="PW"
+        android:inputType="textPassword" />
 
 
+    <EditText
+        android:id="@+id/etCkPw"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:ems="10"
+        android:hint="비밀번호 확인"
+        android:inputType="textPassword" />
+
+    <EditText
+        android:id="@+id/etUserMessage"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/text_border"
+        android:ems="10"
+        android:hint="소개글을 작성하세요 !"
+        android:maxLength="50"/>
 
     <Button
         android:id="@+id/btnActionInsertUser"
@@ -48,7 +68,7 @@
         android:layout_marginTop="30dp"
         android:layout_marginBottom="10dp"
         android:background="#495057"
-        android:text="로그인"
+        android:text="계정만들기"
         android:textColor="#FFFFFF" />
 
     <Button
@@ -57,7 +77,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:background="#495057"
-        android:text="회원가입"
+        android:text="로그인하러 가기"
         android:textColor="#FFFFFF" />
 
 </LinearLayout>
