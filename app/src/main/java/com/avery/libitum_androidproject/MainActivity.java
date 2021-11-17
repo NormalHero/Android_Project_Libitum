@@ -47,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
         getSupportActionBar().setDisplayShowTitleEnabled(false);
+//        getSupportActionBar().setIcon(R.drawable.logo);
+
+
 
         insertPostFragment = new InsertPostFragment();
         postDetailFragment = new PostDetailFragment();
