@@ -8,12 +8,13 @@
         <entry key="..\:/Avery/Libitum_AndroidProject/app/src/main/res/drawable/ic_launcher_background.xml" value="0.23489583333333333" />
         <entry key="..\:/Avery/Libitum_AndroidProject/app/src/main/res/drawable/ic_setting.xml" value="0.24351851851851852" />
         <entry key="..\:/Avery/Libitum_AndroidProject/app/src/main/res/drawable/text_border.xml" value="0.23125" />
+        <entry key="..\:/Avery/Libitum_AndroidProject/app/src/main/res/drawable/text_borderwhite.xml" value="0.24166666666666667" />
         <entry key="..\:/Avery/Libitum_AndroidProject/app/src/main/res/layout/activity_insert_user.xml" value="0.22" />
         <entry key="..\:/Avery/Libitum_AndroidProject/app/src/main/res/layout/activity_intro.xml" value="0.25" />
         <entry key="..\:/Avery/Libitum_AndroidProject/app/src/main/res/layout/activity_main.xml" value="0.22" />
         <entry key="..\:/Avery/Libitum_AndroidProject/app/src/main/res/layout/fragment_insert_post.xml" value="0.33" />
         <entry key="..\:/Avery/Libitum_AndroidProject/app/src/main/res/layout/fragment_my_feed.xml" value="0.22" />
-        <entry key="..\:/Avery/Libitum_AndroidProject/app/src/main/res/layout/fragment_post_detail.xml" value="0.21510416666666668" />
+        <entry key="..\:/Avery/Libitum_AndroidProject/app/src/main/res/layout/fragment_post_detail.xml" value="0.33" />
         <entry key="..\:/Avery/Libitum_AndroidProject/app/src/main/res/layout/fragment_post_list.xml" value="0.21510416666666668" />
         <entry key="..\:/Avery/Libitum_AndroidProject/app/src/main/res/menu/main_menu.xml" value="0.25" />
         <entry key="..\:/Avery/Libitum_AndroidProject/app/src/main/res/menu/toolbar_menu.xml" value="0.21510416666666668" />

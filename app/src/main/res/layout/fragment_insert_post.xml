@@ -47,7 +47,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_margin="10dp"
-        android:background="#F8F8F8"
+        android:background="#FFFFFF"
         android:src="@drawable/musicupload" />
 
     <EditText

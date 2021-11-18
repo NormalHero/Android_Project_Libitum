@@ -116,6 +116,9 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
+
+
     }
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -126,6 +129,15 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+    public void onFragmentChange(int index){
+        if(index == 0){
+            getSupportFragmentManager().beginTransaction().replace(R.id.fl_main,postListFragment).commit();
+        }else if(index == 3){
+            getSupportFragmentManager().beginTransaction().replace(R.id.fl_main,postDetailFragment).commit();
+        }
+    }
+
 
 
 }
