@@ -28,12 +28,7 @@ public class introActivity extends AppCompatActivity {
             }
         });
 
-        findViewById(R.id.btnLoginGo).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                // 회원가입 구현
-            }
-        });
+
 
         findViewById(R.id.btnLoginGo).setOnClickListener(new View.OnClickListener() {
             @Override
