@@ -42,7 +42,7 @@
         android:text="※음원파일만 가능합니다" />
 
     <ImageButton
-        android:id="@+id/postMedia"
+        android:id="@+id/btnFindMusic"
         android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"

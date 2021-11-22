@@ -8,10 +8,11 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.avery.libitum_androidproject.DBSQLite.MyDB;
 import com.avery.libitum_androidproject.dialog.CustomDialog;
 
 public class InsertUserActivity extends AppCompatActivity {
-    EditText etUserPw,etUserId, etCkPw;
+    EditText etUserPw,etUserId, etCkPw, etUserMessage;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,6 +20,7 @@ public class InsertUserActivity extends AppCompatActivity {
 
         etUserPw = findViewById(R.id.etUserPw);
         etUserId = findViewById(R.id.etUserId);
+        etUserMessage = findViewById(R.id.etUserMessage);
         etCkPw = findViewById(R.id.etCkPw);
 
 
@@ -27,7 +29,13 @@ public class InsertUserActivity extends AppCompatActivity {
             public void onClick(View view) {
                 // DB에 회원정보 연결하기
                 // etUserId, etCkPw가 서로 일치 하지 않다면, 또는 null값 이라면 버튼 비활성화
-                Toast.makeText(InsertUserActivity.this,"구현중인 기능입니다! (계정 만들기)",Toast.LENGTH_SHORT).show();
+                MyDB myDB = new MyDB(InsertUserActivity.this);
+                String id = etUserId.getText().toString();
+                String pw = etUserPw.getText().toString();
+                String data1 = etUserMessage.getText().toString();
+                myDB.regist(id, pw,data1);
+
+
             }
         });
 

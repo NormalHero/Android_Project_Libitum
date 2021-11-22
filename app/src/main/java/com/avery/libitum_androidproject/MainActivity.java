@@ -125,6 +125,8 @@ public class MainActivity extends AppCompatActivity {
         if(item.getItemId() == R.id.tm_logOut){
             Intent intent = new Intent(this, introActivity.class);
             startActivity(intent);
+            finish();
+
         }
 
         return super.onOptionsItemSelected(item);
