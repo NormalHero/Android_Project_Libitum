@@ -16,6 +16,7 @@ public class MyDBHelper extends SQLiteOpenHelper {
 
         sqLiteDatabase.execSQL("CREATE TABLE Member (id CHAR(20) PRIMARY KEY, name CHAR(20));");
 
+
     }
 
     @Override

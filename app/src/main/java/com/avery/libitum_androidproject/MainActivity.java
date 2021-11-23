@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     BottomNavigationView bottomNavi;
     Toolbar toolbar;
     int selectedFragment = 0;
-
+    private final int MY_PERMISSIONS_REQUEST_READ_EXTERNAL_STROAGE = 1001;
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
     InsertPostFragment insertPostFragment;

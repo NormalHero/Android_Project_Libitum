@@ -1,12 +1,38 @@
 package com.avery.libitum_androidproject.postdata;
 
+import com.google.gson.annotations.SerializedName;
+
 public class LibitumPost {
     String id;
+    @SerializedName("title")
     String title;
+    @SerializedName("content")
     String content;
+    @SerializedName("memberName")
     String memberName;
+    @SerializedName("like")
     String like;
+    @SerializedName("data1")
     String data1;
+    @SerializedName("createAt")
+    String createAt;
+    int type ;
+
+    public String getCreateAt() {
+        return createAt;
+    }
+
+    public void setCreateAt(String createAt) {
+        this.createAt = createAt;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
 
     @Override
     public String toString() {
@@ -17,6 +43,8 @@ public class LibitumPost {
                 ", memberName='" + memberName + '\'' +
                 ", like='" + like + '\'' +
                 ", data1='" + data1 + '\'' +
+                ", createAt='" + createAt + '\'' +
+                ", type=" + type +
                 '}';
     }
 
