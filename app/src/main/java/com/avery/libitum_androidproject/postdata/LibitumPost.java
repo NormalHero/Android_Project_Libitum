@@ -26,6 +26,14 @@ public class LibitumPost {
         this.createAt = createAt;
     }
 
+    public LibitumPost(){
+
+    }
+    public LibitumPost(String title, String memberName) {
+        this.title = title;
+        this.memberName = memberName;
+    }
+
     public int getType() {
         return type;
     }

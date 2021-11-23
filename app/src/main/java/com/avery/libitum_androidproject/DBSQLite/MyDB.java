@@ -1,21 +1,20 @@
 package com.avery.libitum_androidproject.DBSQLite;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import android.widget.Toast;
 
 import com.avery.libitum_androidproject.MainActivity;
+import com.avery.libitum_androidproject.adapter.MemberRecycleAdapter;
 import com.avery.libitum_androidproject.api.APIClient;
 import com.avery.libitum_androidproject.api.MemberAPI;
 import com.avery.libitum_androidproject.api.PostAPI;
-import com.avery.libitum_androidproject.helper.MyDBHelper;
 import com.avery.libitum_androidproject.introActivity;
 import com.avery.libitum_androidproject.postdata.LibitumPost;
 import com.avery.libitum_androidproject.userdata.Member;
+
+import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -27,12 +26,17 @@ public class MyDB {
     MemberAPI memberAPI = retrofit.create(MemberAPI.class);
     PostAPI postAPI = retrofit.create(PostAPI.class);
     Activity activity;
+    MemberRecycleAdapter memberRecycleAdapter;
    public static String loginUserName ="";
 
 //    public static boolean loginFlag = false;
 
     public MyDB(Activity activity) {
         this.activity = activity;
+    }
+
+    public MyDB() {
+
     }
 
     public  void regist(String loginid, String setpassword, String data1 ){
@@ -134,6 +138,34 @@ public class MyDB {
             }
         });
     }
+//    public void getPostList(){
+//
+//        postAPI.getPostList(4).enqueue(new Callback<List<LibitumPost>>() {
+//            @Override
+//            public void onResponse(Call<List<LibitumPost>> call, Response<List<LibitumPost>> response) {
+//                if(response.code() == 200){
+//                    List<LibitumPost> list = response.body();
+//
+//                    for (int i = 0; i < list.size(); i++){
+//
+//                        Log.d("### Member List ###", i+" : "+ list.get(i));
+//                      Log.d("#### Member #### ",i + " : " +list.get(i).getTitle() + " : " +list.get(i).getMemberName());
+//
+//
+//                        memberRecycleAdapter.addItem(new LibitumPost(list.get(i).getTitle(), list.get(i).getMemberName()));
+//
+//                    }
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<LibitumPost>> call, Throwable t) {
+//
+//            }
+//        });
+//
+//    }
+
 
 
 

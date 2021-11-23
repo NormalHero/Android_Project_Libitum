@@ -1,6 +1,7 @@
 package com.avery.libitum_androidproject.fragment;
 
 import static android.content.Intent.ACTION_GET_CONTENT;
+import static android.content.Intent.getIntent;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -12,6 +13,7 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.fragment.app.Fragment;
 
+import android.os.Environment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,6 +26,7 @@ import com.avery.libitum_androidproject.R;
 
 
 import java.io.File;
+import java.io.FileInputStream;
 
 
 public class InsertPostFragment extends Fragment {
@@ -87,11 +90,17 @@ public class InsertPostFragment extends Fragment {
         resultLauncher = registerForActivityResult(new ActivityResultContracts.StartActivityForResult(), new ActivityResultCallback<ActivityResult>() {
             @Override
             public void onActivityResult(ActivityResult result) {
-                filePath= result.getData().getData().getPath();
+
+            //    File fileFile =result.getData().getData().get; String getFile = fileFile.getPath()
+
+
+//                filePath= result.getData().getData().getPath();
+                filePath = Environment.getExternalStorageDirectory().getAbsolutePath(); // 절대경로를 얻는 코드
+
 
 //                String file = new File(filePath).getAbsolutePath();
 //                filePath = uri.getPath();
-                Log.d("###",filePath);
+                Log.d("###",filePath );
 //                Log.d("###",file);
             }
         });
@@ -100,6 +109,7 @@ public class InsertPostFragment extends Fragment {
         btnActionInsertPost.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
 
 
                 MyDB myDB = new MyDB(getActivity());

@@ -21,13 +21,11 @@
         android:text=" 리스트로 불러온 타이틀을 클릭하면 이동->postDetail 이동(임시)"
         android:textSize="12sp" />
 
-    <ListView
-        android:id="@+id/lvPost"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvPostList"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#FFFFFF">
+        android:layout_height="match_parent" />
 
-    </ListView>
     <!-- 구분을 위한 임시 색상 -->
 
 </LinearLayout>

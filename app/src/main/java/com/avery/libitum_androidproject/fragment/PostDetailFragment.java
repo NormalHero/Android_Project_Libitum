@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 
 import android.os.IBinder;
 import android.os.ParcelFileDescriptor;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,6 +39,7 @@ MediaPlayer mediaPlayer;
 
     public PostDetailFragment() {
         // Required empty public constructor
+
     }
 
 
@@ -52,24 +54,14 @@ MediaPlayer mediaPlayer;
 
 
       sbpostMedia = view.findViewById(R.id.sbpostMedia);
-//        mediaPlayer = MediaPlayer.create(getActivity(), R.raw.teq);
-        String files ="/document/raw:/storage/emulated/0/Download/Bet_On_It.mp3";
+
+        String files ="/storage/emulated/0/Download/1.wav";
 
      Uri uri = Uri.parse(files);
+        mediaPlayer = MediaPlayer.create(getActivity(),uri );
+        sbpostMedia.setMax(mediaPlayer.getDuration());
 
-//                 sbpostMedia.setMax(mediaPlayer.getDuration());
 
-//        ContentResolver resolver = getContext().getContentResolver();
-//        String readOnlyMode = "r";
-//        ParcelFileDescriptor pfd = null;
-//        try {
-//            pfd = resolver.openFileDescriptor(uri, readOnlyMode);
-//        } catch (FileNotFoundException e) {
-//            e.printStackTrace();
-//        }
-
-// /document/raw:/storage/emulated/0/Download/1.wav
-//        String files= "Download/1.wav";
 
 
         btnPlay.setOnClickListener(new View.OnClickListener() {
@@ -81,36 +73,14 @@ MediaPlayer mediaPlayer;
                 // 음원재생
 
 
+                mediaPlayer.start();
 
-                try {
-                    mediaPlayer = new MediaPlayer();
-//                    mediaPlayer.setDataSource(getContext(),Uri.parse("file://"+files));
 
-                    mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-//                    mediaPlayer.setDataSource(getContext(),Uri.parse(files));
-                    mediaPlayer.setDataSource(getContext(),uri);
-//                    mediaPlayer.setDataSource(files);
-//                    mediaPlayer.prepareAsync();
-                    mediaPlayer.prepare();
-                } catch (IOException e) {
-                    e.printStackTrace();
+
+
                 }
 
 
-
-
-                mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-                    @Override
-                    public void onPrepared(MediaPlayer mediaPlayer) {
-                        mediaPlayer.start();
-                    }
-                });
-
-//                    mediaPlayer = new MediaPlayer();
-//                    mediaPlayer.setDataSource(files);
-//                    mediaPlayer.prepare();
-//                    mediaPlayer.start();
-            }
         });
 
 
@@ -121,28 +91,28 @@ MediaPlayer mediaPlayer;
                 btnPlay.setVisibility(view.VISIBLE);
                 btnPause.setVisibility(view.INVISIBLE);
                 // 음원 중지
-                mediaPlayer.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-                    @Override
-                    public void onPrepared(MediaPlayer mediaPlayer) {
+
+
                         mediaPlayer.pause();
-                    }
-                });
+
+
+
 
             }
         });
 
 
-//
-//        new Timer().schedule(new TimerTask() {
-//            @Override
-//            public void run() {
-//                if(mediaPlayer.isPlaying()){
-//                    sbpostMedia.setProgress(mediaPlayer.getCurrentPosition());
-//
-//                }
-//
-//            }
-//        },0,100);
+
+        new Timer().schedule(new TimerTask() {
+            @Override
+            public void run() {
+                if(mediaPlayer.isPlaying()){
+                    sbpostMedia.setProgress(mediaPlayer.getCurrentPosition());
+
+                }
+
+            }
+        },0,100);
 
 
         return view;
