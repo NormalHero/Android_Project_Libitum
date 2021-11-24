@@ -25,6 +25,7 @@ import com.avery.libitum_androidproject.postdata.LibitumPost;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 
 public class MemberRecycleAdapter extends RecyclerView.Adapter<MemberRecycleAdapter.MemberHolder> {
@@ -83,14 +84,27 @@ public class MemberRecycleAdapter extends RecyclerView.Adapter<MemberRecycleAdap
 
 
 
-//       holder.musicPath.substring(holder.musicPath.lastIndexOf("/document/raw:/")+1);
+//     holder.musicPath.substring(holder.musicPath.lastIndexOf("/document/raw:/")+1);
 
+        Calendar cal = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSX");
         SimpleDateFormat sdf2 = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         try {
-             Date date = sdf.parse(holder.postDate);
 
-            holder.postDate = sdf2.format(date);
+
+
+              Date date = sdf.parse(holder.postDate);
+
+
+
+              holder.postDate = sdf2.format(date);
+              date = sdf2.parse(holder.postDate);
+
+            cal.setTime(date);
+            cal.add(Calendar.MINUTE, 540);
+
+            holder.postDate = sdf2.format(cal.getTime());
+
 
         } catch (ParseException e) {
             e.printStackTrace();
