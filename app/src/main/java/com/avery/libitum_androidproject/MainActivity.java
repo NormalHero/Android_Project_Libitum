@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.avery.libitum_androidproject.adapter.MemberRecycleAdapter;
 import com.avery.libitum_androidproject.fragment.InsertPostFragment;
 import com.avery.libitum_androidproject.fragment.MyFeedFragment;
 import com.avery.libitum_androidproject.fragment.PostDetailFragment;
@@ -166,6 +167,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void onFragmentChange(int index){
+
+
         if(index == 0){
             getSupportFragmentManager().beginTransaction().replace(R.id.fl_main,postListFragment).commit();
         }else if(index == 3){

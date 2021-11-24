@@ -20,6 +20,7 @@ public interface PostAPI {
 
     @GET("POST")
     Call<List<LibitumPost>> getPostList(@Query("type")int type);
+
     @GET("POST")
     Call<List<LibitumPost>> getMyFeed(@Query("type")int type);
 

@@ -1,7 +1,6 @@
 package com.avery.libitum_androidproject.fragment;
 
 import static android.content.Intent.ACTION_GET_CONTENT;
-import static android.content.Intent.getIntent;
 
 import android.content.Intent;
 import android.net.Uri;
@@ -13,7 +12,6 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.fragment.app.Fragment;
 
-import android.os.Environment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,10 +21,6 @@ import android.widget.ImageButton;
 
 import com.avery.libitum_androidproject.DBSQLite.MyDB;
 import com.avery.libitum_androidproject.R;
-
-
-import java.io.File;
-import java.io.FileInputStream;
 
 
 public class InsertPostFragment extends Fragment {
@@ -48,7 +42,7 @@ public class InsertPostFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_insert_post, container, false);
 
         ImageButton btnFindMusic = view.findViewById(R.id.btnFindMusic);
-        etpostTitle = view.findViewById(R.id.tvpostTitle);
+        etpostTitle = view.findViewById(R.id.etPostTitle);
         etpostText = view.findViewById(R.id.etpostText);
         btnFindMusic.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -93,9 +87,10 @@ public class InsertPostFragment extends Fragment {
 
             //    File fileFile =result.getData().getData().get; String getFile = fileFile.getPath()
 
-
-//                filePath= result.getData().getData().getPath();
-                filePath = Environment.getExternalStorageDirectory().getAbsolutePath(); // 절대경로를 얻는 코드
+              // /document/raw:/
+                filePath= result.getData().getData().getPath();
+                filePath =  filePath.substring(15);
+//                filePath = Environment.getExternalStorageDirectory().getAbsolutePath(); // 절대경로를 얻는 코드
 
 
 //                String file = new File(filePath).getAbsolutePath();
@@ -114,10 +109,12 @@ public class InsertPostFragment extends Fragment {
 
                 MyDB myDB = new MyDB(getActivity());
 
-                String title = etpostText.getText().toString();
-                String content = etpostTitle.getText().toString();
+                String title = etpostTitle.getText().toString();
+                String content = etpostText.getText().toString();
                 String memberName= myDB.loginUserName;
                 myDB.insertPost(title,content, filePath,memberName);
+
+
 
 //        Toast.makeText(getContext(),"구현중인 기능입니다! (게시물 등록)",Toast.LENGTH_SHORT).show();
             }

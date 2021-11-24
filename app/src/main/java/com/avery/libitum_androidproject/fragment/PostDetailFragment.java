@@ -1,31 +1,20 @@
 package com.avery.libitum_androidproject.fragment;
 
-import android.content.ComponentName;
-import android.content.ContentResolver;
-import android.content.ServiceConnection;
-import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
 
-import android.os.IBinder;
-import android.os.ParcelFileDescriptor;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.avery.libitum_androidproject.R;
 
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.net.URI;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -52,12 +41,25 @@ MediaPlayer mediaPlayer;
         btnPause =(ImageButton)view.findViewById(R.id.btnPause);
 
 
-
+//        String files ="/storage/emulated/0/Download/1.wav";
+        String files ="" ;
+        tvpostTitle= view.findViewById(R.id.etPostTitle);
+        tvpostDate= view.findViewById(R.id.tvpostDate);
+        tvpostUserId= view.findViewById(R.id.tvpostUserId);
+        tvPostText= view.findViewById(R.id.tvPostText);
+        if(getArguments() == null){
+            tvpostTitle.setText(getArguments().getString("postTitle"));
+            tvpostDate.setText(getArguments().getString("postDate"));
+            tvpostUserId.setText(getArguments().getString("postMb"));
+            tvPostText.setText(getArguments().getString("postContext"));
+            files = getArguments().getString("musicPath");
+        }
       sbpostMedia = view.findViewById(R.id.sbpostMedia);
 
-        String files ="/storage/emulated/0/Download/1.wav";
+        // DB에서 가져오기
 
-     Uri uri = Uri.parse(files);
+        Uri uri = Uri.parse(files);
+
         mediaPlayer = MediaPlayer.create(getActivity(),uri );
         sbpostMedia.setMax(mediaPlayer.getDuration());
 

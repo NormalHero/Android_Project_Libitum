@@ -18,7 +18,7 @@
         android:text="※최대 20글자" />
 
     <EditText
-        android:id="@+id/tvpostTitle"
+        android:id="@+id/etPostTitle"
         android:layout_width="340dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"

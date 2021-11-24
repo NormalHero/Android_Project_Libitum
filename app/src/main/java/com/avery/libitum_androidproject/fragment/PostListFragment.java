@@ -105,7 +105,10 @@ public class PostListFragment extends Fragment {
                         Log.d("#### Member #### ",i + " : " +list.get(i).getTitle() + " : " +list.get(i).getMemberName());
 
 
-                        memberRecycleAdapter.addItem(new LibitumPost(list.get(i).getTitle(), list.get(i).getMemberName()));
+                        memberRecycleAdapter.addItem(new LibitumPost(list.get(i).getTitle(), list.get(i).getMemberName(),
+                                list.get(i).getContent() , list.get(i).getData1(),list.get(i).getCreateAt()));
+
+
 
                     }
                 }
