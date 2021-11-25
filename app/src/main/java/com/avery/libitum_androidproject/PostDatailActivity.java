@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -21,6 +22,7 @@ public class PostDatailActivity extends AppCompatActivity {
     TextView tvpostTitle, tvpostDate, tvpostUserId, tvPostText;
     SeekBar sbpostMedia;
     MediaPlayer mediaPlayer;
+    Uri uri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,11 +50,14 @@ public class PostDatailActivity extends AppCompatActivity {
         sbpostMedia = findViewById(R.id.sbpostMedia);
 
         // DB에서 가져오기
-        Log.d("#######",files);
-         Uri uri = Uri.parse(files);
 
-        mediaPlayer = MediaPlayer.create(PostDatailActivity.this,uri );
-        sbpostMedia.setMax(mediaPlayer.getDuration());
+        if( files != null) {
+            Log.d("#######", files);
+             uri = Uri.parse(files);
+            mediaPlayer = MediaPlayer.create(PostDatailActivity.this,uri );
+            sbpostMedia.setMax(mediaPlayer.getDuration());
+        }
+
 
 
 
@@ -65,9 +70,11 @@ public class PostDatailActivity extends AppCompatActivity {
                 btnPause.setVisibility(view.VISIBLE);
                 // 음원재생
 
-
-                mediaPlayer.start();
-
+                if( files != null) {
+                    mediaPlayer.start();
+                }else{
+                    Toast.makeText(PostDatailActivity.this, "음악 파일이 없습니다 !", Toast.LENGTH_SHORT).show();
+                }
 
 
 
@@ -85,10 +92,10 @@ public class PostDatailActivity extends AppCompatActivity {
                 btnPause.setVisibility(view.INVISIBLE);
                 // 음원 중지
 
+                if( files != null) {
+                    mediaPlayer.pause();
 
-                mediaPlayer.pause();
-
-
+                }
 
 
             }
@@ -105,9 +112,11 @@ public class PostDatailActivity extends AppCompatActivity {
         new Timer().schedule(new TimerTask() {
             @Override
             public void run() {
-                if(mediaPlayer.isPlaying()){
-                    sbpostMedia.setProgress(mediaPlayer.getCurrentPosition());
+                if(files != null) {
+                    if (mediaPlayer.isPlaying()) {
+                        sbpostMedia.setProgress(mediaPlayer.getCurrentPosition());
 
+                    }
                 }
 
             }

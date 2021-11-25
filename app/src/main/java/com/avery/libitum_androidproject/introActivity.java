@@ -4,13 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.Toast;
 
-import com.avery.libitum_androidproject.DBSQLite.MyDB;
+import com.avery.libitum_androidproject.connectionAPI.MyDB;
 
 public class introActivity extends AppCompatActivity {
        EditText etUserId,etUserPw;

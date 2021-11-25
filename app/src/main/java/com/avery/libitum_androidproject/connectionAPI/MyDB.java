@@ -1,20 +1,22 @@
-package com.avery.libitum_androidproject.DBSQLite;
+package com.avery.libitum_androidproject.connectionAPI;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
+import android.widget.Adapter;
 import android.widget.Toast;
 
 import com.avery.libitum_androidproject.MainActivity;
+import com.avery.libitum_androidproject.PostDatailActivity;
 import com.avery.libitum_androidproject.adapter.MemberRecycleAdapter;
 import com.avery.libitum_androidproject.api.APIClient;
 import com.avery.libitum_androidproject.api.MemberAPI;
 import com.avery.libitum_androidproject.api.PostAPI;
 import com.avery.libitum_androidproject.introActivity;
+import com.avery.libitum_androidproject.memberholder.LoginMemberHolder;
 import com.avery.libitum_androidproject.postdata.LibitumPost;
 import com.avery.libitum_androidproject.userdata.Member;
 
-import java.util.Date;
 import java.util.List;
 
 import retrofit2.Call;
@@ -27,6 +29,7 @@ public class MyDB {
     MemberAPI memberAPI = retrofit.create(MemberAPI.class);
     PostAPI postAPI = retrofit.create(PostAPI.class);
     Activity activity;
+
     MemberRecycleAdapter memberRecycleAdapter;
    public static String loginUserName ="";
 
@@ -40,7 +43,7 @@ public class MyDB {
 
     }
 
-    public  void regist(String loginid, String setpassword, String data1 ){
+    public  void regist(String loginid, String setpassword, String data1, String data2){
 
 
 
@@ -49,6 +52,7 @@ public class MyDB {
         member.setLoginId(loginid);
         member.setPassword(setpassword);
         member.setData1(data1);
+        member.setData2(data2);
         member.setType(4);
 
 
@@ -76,11 +80,13 @@ public class MyDB {
     }
 
     public void login(String loginid, String setpassword){
+
         Member member = new Member();
         member.setLoginId(loginid);
         member.setPassword(setpassword);
         member.setType(4);
         loginUserName = loginid;
+//        getUser();
 
         memberAPI.login(member).enqueue(new Callback<Void>() {
             @Override
@@ -109,6 +115,57 @@ public class MyDB {
 
 
     }
+
+//   public void getUser (){
+//
+//
+//        memberAPI.getUser(4).enqueue(new Callback<List<Member>>() {
+//            @Override
+//            public void onResponse(Call<List<Member>> call, Response<List<Member>> response) {
+//                LoginMemberHolder loginMemberHolder ;
+//                List<Member> list = response.body();
+//
+//                for (int i = 0; i < list.size(); i++){
+//
+//
+//                    Log.d("#### Member #### ",i + " : " +list.get(i).getLoginId() );
+//                    if(list.get(i).getLoginId().equals(loginUserName)){
+//                        Log.d("!!!!!!",list.get(i).getLoginId());
+//
+//
+//                        loginMemberHolder = new LoginMemberHolder(list.get(i).getLoginId(),list.get(i).getData1(),list.get(i).getData2());
+//                        loginMemberHolder.setTvUserId(list.get(i).getLoginId());
+//                        loginMemberHolder.setTvUserText(list.get(i).getData1());
+//                        loginMemberHolder.setIvUserImg(list.get(i).getData2());
+//
+//                        String test = loginMemberHolder.getTvUserId();
+//                        Log.d(" ###@@@ ", test+"|"+list.get(i).getLoginId());
+//
+//
+//
+//
+//
+//
+//                    }
+//                }
+//
+//
+//
+//
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<Member>> call, Throwable t) {
+//
+//            }
+//
+//
+//
+//        });
+//
+//   }
+
+
 
 
 

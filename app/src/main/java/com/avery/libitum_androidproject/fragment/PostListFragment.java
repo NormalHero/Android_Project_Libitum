@@ -12,9 +12,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
-import com.avery.libitum_androidproject.DBSQLite.MyDB;
+import com.avery.libitum_androidproject.connectionAPI.MyDB;
 import com.avery.libitum_androidproject.MainActivity;
 import com.avery.libitum_androidproject.R;
 import com.avery.libitum_androidproject.adapter.MemberRecycleAdapter;
@@ -76,15 +75,15 @@ public class PostListFragment extends Fragment {
         //myDB.getPostList();
 
 
-        Button btnTest = (Button)view.findViewById(R.id.btnTest);
-        btnTest.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                activity.onFragmentChange(3);
-
-
-            }
-        });
+//        Button btnTest = (Button)view.findViewById(R.id.btnTest);
+//        btnTest.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                activity.onFragmentChange(3);
+//
+//
+//            }
+//        });
         return view;
     }
 

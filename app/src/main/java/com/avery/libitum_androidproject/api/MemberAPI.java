@@ -1,5 +1,6 @@
 package com.avery.libitum_androidproject.api;
 
+import com.avery.libitum_androidproject.postdata.LibitumPost;
 import com.avery.libitum_androidproject.userdata.Member;
 
 import java.util.List;
@@ -19,6 +20,12 @@ public interface MemberAPI {
 
     @POST("Login")
     Call<Void> login(@Body Member param);
+
+    @GET("member")
+    Call<List<Member>>  getUser (@Query("type")int type);
+
+    //Call<List<LibitumPost>> getPostList(@Query("type")int type);
+
 
 
 

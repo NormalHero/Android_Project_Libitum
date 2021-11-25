@@ -18,6 +18,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.Light.NoActionBar"
         android:usesCleartextTraffic="true">
+
+        <provider
+            android:authorities="com.avery.libitum_androidproject"
+            android:name="androidx.core.content.FileProvider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths"/>
+
+        </provider>
+
+
         <activity
             android:name=".PostDatailActivity"
             android:exported="true" />
@@ -40,5 +54,12 @@
             android:name=".MainActivity"
             android:exported="true" />
     </application>
+
+
+
+
+
+
+
 
 </manifest>

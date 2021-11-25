@@ -19,7 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.avery.libitum_androidproject.MainActivity;
 import com.avery.libitum_androidproject.PostDatailActivity;
 import com.avery.libitum_androidproject.R;
-import com.avery.libitum_androidproject.fragment.PostDetailFragment;
+
 import com.avery.libitum_androidproject.postdata.LibitumPost;
 
 import java.text.ParseException;

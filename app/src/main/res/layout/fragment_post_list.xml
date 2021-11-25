@@ -9,22 +9,16 @@
     <!-- TODO: Update blank fragment layout -->
 
     <TextView
-        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="PostList" />
-
-    <Button
-        android:id="@+id/btnTest"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text=" 리스트로 불러온 타이틀을 클릭하면 이동->postDetail 이동(임시)"
-        android:textSize="12sp" />
+        android:layout_gravity="center_horizontal"
+        android:text="제목 : 작성자" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvPostList"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:paddingLeft="10dp" />
 
     <!-- 구분을 위한 임시 색상 -->
 

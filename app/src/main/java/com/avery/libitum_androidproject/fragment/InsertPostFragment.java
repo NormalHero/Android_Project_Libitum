@@ -19,7 +19,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.ImageButton;
 
-import com.avery.libitum_androidproject.DBSQLite.MyDB;
+import com.avery.libitum_androidproject.connectionAPI.MyDB;
 import com.avery.libitum_androidproject.R;
 
 
@@ -112,7 +112,7 @@ public class InsertPostFragment extends Fragment {
                 String title = etpostTitle.getText().toString();
                 String content = etpostText.getText().toString();
                 String memberName= myDB.loginUserName;
-                myDB.insertPost(title,content, filePath,memberName);
+                myDB.insertPost(title,content, filePath,memberName );
 
 
 

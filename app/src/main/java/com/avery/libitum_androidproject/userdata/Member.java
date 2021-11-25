@@ -13,6 +13,8 @@ public class Member {
     String name;
     @SerializedName("data1")
     String data1;
+    @SerializedName("data2")
+    String data2;
     @SerializedName("type")
     int type ;
 
@@ -29,8 +31,29 @@ public class Member {
         return id;
     }
 
+    @Override
+    public String toString() {
+        return "Member{" +
+                "id='" + id + '\'' +
+                ", loginId='" + loginId + '\'' +
+                ", password='" + password + '\'' +
+                ", name='" + name + '\'' +
+                ", data1='" + data1 + '\'' +
+                ", data2='" + data2 + '\'' +
+                ", type=" + type +
+                '}';
+    }
+
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getData2() {
+        return data2;
+    }
+
+    public void setData2(String data2) {
+        this.data2 = data2;
     }
 
     public String getName() {
@@ -73,15 +96,4 @@ public class Member {
         this.data1 = data1;
     }
 
-    @Override
-    public String toString() {
-        return "Member{" +
-                "id='" + id + '\'' +
-                ", loginId='" + loginId + '\'' +
-                ", password='" + password + '\'' +
-                ", name='" + name + '\'' +
-                ", data1='" + data1 + '\'' +
-                ", type=" + type +
-                '}';
-    }
 }

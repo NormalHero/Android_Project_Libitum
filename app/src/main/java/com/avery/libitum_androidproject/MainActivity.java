@@ -11,16 +11,19 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
 import com.avery.libitum_androidproject.adapter.MemberRecycleAdapter;
+import com.avery.libitum_androidproject.connectionAPI.MyDB;
 import com.avery.libitum_androidproject.fragment.InsertPostFragment;
 import com.avery.libitum_androidproject.fragment.MyFeedFragment;
-import com.avery.libitum_androidproject.fragment.PostDetailFragment;
+
 import com.avery.libitum_androidproject.fragment.PostListFragment;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -32,9 +35,10 @@ public class MainActivity extends AppCompatActivity {
     FragmentManager fragmentManager;
     FragmentTransaction fragmentTransaction;
     InsertPostFragment insertPostFragment;
-    PostDetailFragment postDetailFragment;
+//    PostDetailFragment postDetailFragment;
     PostListFragment postListFragment;
     MyFeedFragment myFeedFragment;
+      MyDB myDB = new MyDB(MainActivity.this);
 
 
     @Override
@@ -47,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
 
 // storage permission
@@ -77,6 +80,8 @@ public class MainActivity extends AppCompatActivity {
 
         }
 
+
+
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -86,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
 
 
         insertPostFragment = new InsertPostFragment();
-        postDetailFragment = new PostDetailFragment();
+//        postDetailFragment = new PostDetailFragment();
         postListFragment = new PostListFragment();
         myFeedFragment = new MyFeedFragment();
 
@@ -120,6 +125,8 @@ public class MainActivity extends AppCompatActivity {
                  return true;
 
              }else if(item.getItemId() == R.id.mi_myFeed){
+
+//                 myDB.getUser();
                  fragmentTransaction = fragmentManager.beginTransaction();
                  fragmentTransaction.replace(R.id.fl_main, myFeedFragment);
                  fragmentTransaction.commit();
@@ -149,10 +156,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-
-
-
-
     }
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
@@ -166,15 +169,15 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void onFragmentChange(int index){
-
-
-        if(index == 0){
-            getSupportFragmentManager().beginTransaction().replace(R.id.fl_main,postListFragment).commit();
-        }else if(index == 3){
-            getSupportFragmentManager().beginTransaction().replace(R.id.fl_main,postDetailFragment).commit();
-        }
-    }
+//    public void onFragmentChange(int index){
+//
+//
+//        if(index == 0){
+//            getSupportFragmentManager().beginTransaction().replace(R.id.fl_main,postListFragment).commit();
+//        }else if(index == 3){
+//            getSupportFragmentManager().beginTransaction().replace(R.id.fl_main,postDetailFragment).commit();
+//        }
+//    }
 
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
