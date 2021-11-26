@@ -77,8 +77,12 @@
         android:layout_marginBottom="40dp"
         android:background="#686868" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvLoginPostList"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center|center_horizontal"
+        android:foregroundGravity="center_horizontal" />
 
-    <ListView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+
 </LinearLayout>

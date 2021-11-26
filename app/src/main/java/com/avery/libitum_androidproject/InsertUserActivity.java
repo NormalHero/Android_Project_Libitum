@@ -35,7 +35,7 @@ public class InsertUserActivity extends AppCompatActivity {
 
     ActivityResultLauncher<Intent> resultLauncher;
 
-    String imgFilePath;
+    String imgFilePath, data2;
     Uri photoUri;
 
     boolean isCamera = false;
@@ -59,12 +59,28 @@ public class InsertUserActivity extends AppCompatActivity {
             public void onClick(View view) {
                 // DB에 회원정보 연결하기
                 // etUserId, etCkPw가 서로 일치 하지 않다면, 또는 null값 이라면 버튼 비활성화
+
+                if(etUserPw.getText().toString().equals(etCkPw.getText().toString())){
+
+
+
                 MyDB myDB = new MyDB(InsertUserActivity.this);
                 String id = etUserId.getText().toString();
                 String pw = etUserPw.getText().toString();
                 String data1 = etUserMessage.getText().toString();
-                myDB.regist(id, pw,data1, filePath);
+//                Log.d("&&&",photoUri.getPath());
 
+                if(photoUri == null ){
+                    data2 = filePath;
+                }else if(filePath == null){
+                    data2 = photoUri.getPath();
+                }
+
+                myDB.regist(id, pw,data1, data2);
+                }else{
+                    Toast.makeText(InsertUserActivity.this, "비밀번호가 일치하지 않습니다", Toast.LENGTH_SHORT).show();
+                    etCkPw.requestFocus();
+                }
 
             }
         });
@@ -132,7 +148,7 @@ public class InsertUserActivity extends AppCompatActivity {
                                 ivInsertUserImg.setImageURI(photoUri);
 
                             }
-                            Log.d("####test####",filePath);
+//                            Log.d("####test####",filePath);
                         }
                     }
                 });
@@ -145,10 +161,10 @@ public class InsertUserActivity extends AppCompatActivity {
 
 
 
-//        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+        String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
 
-        SimpleDateFormat date = new SimpleDateFormat("yyyy.MM.dd.HH:mm:ss");
-        String timeStamp = date.format(new Date());
+//        SimpleDateFormat date = new SimpleDateFormat("yyyy.MM.dd.HH:mm:ss");
+//        String timeStamp = date.format(new Date());
         String imageFileName = "TEST_" + timeStamp + "_";
         File storageDir = getExternalFilesDir(Environment.DIRECTORY_PICTURES);
         File image = File.createTempFile(imageFileName, ".jpg", storageDir);
@@ -160,8 +176,8 @@ public class InsertUserActivity extends AppCompatActivity {
 
 
 public void galleryAction(){
-Log.d("####","TEST");
-    Toast.makeText(InsertUserActivity.this,"구현중인 기능입니다!!!!!! (카메라)",Toast.LENGTH_SHORT).show();
+
+//    Toast.makeText(InsertUserActivity.this,"구현중인 기능입니다!!!!!! (카메라)",Toast.LENGTH_SHORT).show();
     isCamera = false;
 
     Intent intent = new Intent();

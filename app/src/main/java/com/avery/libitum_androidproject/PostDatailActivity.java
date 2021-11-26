@@ -22,6 +22,9 @@ public class PostDatailActivity extends AppCompatActivity {
     TextView tvpostTitle, tvpostDate, tvpostUserId, tvPostText;
     SeekBar sbpostMedia;
     MediaPlayer mediaPlayer;
+
+
+
     Uri uri;
 
     @Override
@@ -104,9 +107,14 @@ public class PostDatailActivity extends AppCompatActivity {
         findViewById(R.id.btnfinish).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                mediaPlayer.stop();
                 finish();
             }
         });
+
+
+
+
 
 
         new Timer().schedule(new TimerTask() {
@@ -124,5 +132,13 @@ public class PostDatailActivity extends AppCompatActivity {
 
 
 
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        mediaPlayer.stop();
+        finish();
     }
 }
