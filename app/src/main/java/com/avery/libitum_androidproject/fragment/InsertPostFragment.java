@@ -88,15 +88,17 @@ public class InsertPostFragment extends Fragment {
             //    File fileFile =result.getData().getData().get; String getFile = fileFile.getPath()
 
               // /document/raw:/
-                filePath= result.getData().getData().getPath();
-                filePath =  filePath.substring(15);
+
+                    filePath = result.getData().getData().getPath();
+                    filePath = filePath.substring(15);
 //                filePath = Environment.getExternalStorageDirectory().getAbsolutePath(); // 절대경로를 얻는 코드
 
 
 //                String file = new File(filePath).getAbsolutePath();
 //                filePath = uri.getPath();
-                Log.d("###",filePath );
+                    Log.d("###filePath###", filePath);
 //                Log.d("###",file);
+
             }
         });
 
@@ -112,6 +114,10 @@ public class InsertPostFragment extends Fragment {
                 String title = etpostTitle.getText().toString();
                 String content = etpostText.getText().toString();
                 String memberName= myDB.loginUserName;
+
+//                if(filePath == null){
+//                    btnFindMusic.findFocus();
+//                }
                 myDB.insertPost(title,content, filePath,memberName );
 
 

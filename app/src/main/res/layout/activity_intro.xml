@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ff6b6b"
+    android:background="#FF6B6B"
     android:orientation="vertical"
     tools:context=".introActivity">
 
@@ -24,9 +24,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_margin="5dp"
+        android:background="#FFFFFF"
         android:ems="10"
-        android:inputType="textPersonName"
-        android:hint="ID" />
+        android:hint="ID"
+        android:inputType="textPersonName" />
 
     <EditText
         android:id="@+id/etUserPw"
@@ -34,10 +35,10 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_margin="5dp"
+        android:background="#FAFAFA"
         android:ems="10"
-        android:inputType="textPassword"
-        android:hint="PW" />
-
+        android:hint="PW"
+        android:inputType="textPassword" />
 
 
     <Button

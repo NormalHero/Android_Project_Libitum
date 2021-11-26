@@ -110,7 +110,7 @@ public class LoginMemberPostAdapter extends RecyclerView.Adapter<LoginMemberPost
         holder.tvLoginPostTitle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Bundle bundle = new Bundle();
+
 
                 Intent intent = new Intent(view.getContext(), PostDatailActivity.class);
 //                intent.putExtra("postTitle", holder.postTitle);

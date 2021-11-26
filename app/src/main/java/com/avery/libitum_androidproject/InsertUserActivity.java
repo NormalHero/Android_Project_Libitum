@@ -58,28 +58,39 @@ public class InsertUserActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 // DB에 회원정보 연결하기
-                // etUserId, etCkPw가 서로 일치 하지 않다면, 또는 null값 이라면 버튼 비활성화
-
-                if(etUserPw.getText().toString().equals(etCkPw.getText().toString())){
+               // tUserPw != null && etUserId != null && etUserMessage
 
 
 
-                MyDB myDB = new MyDB(InsertUserActivity.this);
-                String id = etUserId.getText().toString();
-                String pw = etUserPw.getText().toString();
-                String data1 = etUserMessage.getText().toString();
-//                Log.d("&&&",photoUri.getPath());
-
-                if(photoUri == null ){
-                    data2 = filePath;
-                }else if(filePath == null){
-                    data2 = photoUri.getPath();
-                }
-
-                myDB.regist(id, pw,data1, data2);
-                }else{
+                if(!etUserPw.getText().toString().equals(etCkPw.getText().toString())  ){
                     Toast.makeText(InsertUserActivity.this, "비밀번호가 일치하지 않습니다", Toast.LENGTH_SHORT).show();
                     etCkPw.requestFocus();
+
+
+
+                }else if(etUserPw.getText().toString().equals("")){
+                    Toast.makeText(InsertUserActivity.this, "비밀번호를 입력 해주세요!", Toast.LENGTH_SHORT).show();
+                    etUserPw.requestFocus();
+                }else if (etUserId.getText().toString().equals("")){
+                    Toast.makeText(InsertUserActivity.this, "아이디를 입력 해주세요!", Toast.LENGTH_SHORT).show();
+                    etUserId.requestFocus();
+                }else if(etUserMessage.getText().toString().equals("")){
+                    Toast.makeText(InsertUserActivity.this, "소개글을 입력하세요!", Toast.LENGTH_SHORT).show();
+                    etUserMessage.requestFocus();
+                }else{
+                    MyDB myDB = new MyDB(InsertUserActivity.this);
+                    String id = etUserId.getText().toString();
+                    String pw = etUserPw.getText().toString();
+                    String data1 = etUserMessage.getText().toString();
+//                Log.d("&&&",photoUri.getPath());
+
+                    if(photoUri == null ){
+                        data2 = filePath;
+                    }else if(filePath == null){
+                        data2 = photoUri.getPath();
+                    }
+
+                    myDB.regist(id, pw,data1, data2);
                 }
 
             }

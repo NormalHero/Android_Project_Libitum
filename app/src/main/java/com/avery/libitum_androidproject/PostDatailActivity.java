@@ -22,7 +22,7 @@ public class PostDatailActivity extends AppCompatActivity {
     TextView tvpostTitle, tvpostDate, tvpostUserId, tvPostText;
     SeekBar sbpostMedia;
     MediaPlayer mediaPlayer;
-
+    String files;
 
 
     Uri uri;
@@ -33,6 +33,8 @@ public class PostDatailActivity extends AppCompatActivity {
         setContentView(R.layout.activity_post_datail);
         btnPlay =findViewById(R.id.btnPlay);
         btnPause =findViewById(R.id.btnPause);
+
+
 
         Intent intent = getIntent();
 
@@ -48,17 +50,27 @@ public class PostDatailActivity extends AppCompatActivity {
             tvpostDate.setText(intent.getStringExtra("postDate"));
             tvpostUserId.setText(intent.getStringExtra("postMb"));
             tvPostText.setText(intent.getStringExtra("postContext"));
-        String files = intent.getStringExtra("musicPath");
+        files = intent.getStringExtra("musicPath");
 
         sbpostMedia = findViewById(R.id.sbpostMedia);
 
         // DB에서 가져오기
 
+
+
+
+
         if( files != null) {
+
             Log.d("#######", files);
              uri = Uri.parse(files);
             mediaPlayer = MediaPlayer.create(PostDatailActivity.this,uri );
             sbpostMedia.setMax(mediaPlayer.getDuration());
+        }
+        else if( files == null){
+            btnPlay.setVisibility(View.INVISIBLE);
+            btnPause.setVisibility(View.INVISIBLE);
+            sbpostMedia.setVisibility(View.INVISIBLE);
         }
 
 
@@ -104,10 +116,13 @@ public class PostDatailActivity extends AppCompatActivity {
             }
         });
 
+
         findViewById(R.id.btnfinish).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mediaPlayer.stop();
+                if(files != null) {
+                    mediaPlayer.stop();
+                }
                 finish();
             }
         });
@@ -138,7 +153,9 @@ public class PostDatailActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        mediaPlayer.stop();
+        if(files != null) {
+            mediaPlayer.stop();
+        }
         finish();
     }
 }

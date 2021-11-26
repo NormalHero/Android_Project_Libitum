@@ -27,7 +27,7 @@
             android:layout_width="0dp"
             android:layout_height="45dp"
             android:layout_weight="3"
-            android:background="#ff6b6b"
+            android:background="#FF6B6B"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
             app:menu="@menu/toolbar_menu">
@@ -50,7 +50,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
-        android:background="#ff6b6b"
+        android:background="#FF6B6B"
         app:labelVisibilityMode="unlabeled"
         app:menu="@menu/main_menu" />
 
