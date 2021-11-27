@@ -2,6 +2,7 @@ package com.avery.libitum_androidproject.fragment;
 
 import static android.content.Intent.ACTION_GET_CONTENT;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -11,6 +12,8 @@ import androidx.activity.result.ActivityResultCallback;
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -27,6 +30,8 @@ public class InsertPostFragment extends Fragment {
     EditText etpostTitle, etpostText;
     String filePath;
     ActivityResultLauncher<Intent> resultLauncher;
+
+//    Fragment frg = new InsertPostFragment();
     Uri uri;
 
 
@@ -44,7 +49,16 @@ public class InsertPostFragment extends Fragment {
         ImageButton btnFindMusic = view.findViewById(R.id.btnFindMusic);
         etpostTitle = view.findViewById(R.id.etPostTitle);
         etpostText = view.findViewById(R.id.etpostText);
+//        FragmentManager manager = getActivity().getSupportFragmentManager();
+//        FragmentTransaction fragmentTransaction = manager.beginTransaction();
+//        fragmentTransaction.detach(frg);
+//        fragmentTransaction.attach(frg);
+//        fragmentTransaction.commit();
+
+
         btnFindMusic.setOnClickListener(new View.OnClickListener() {
+
+
             @Override
             public void onClick(View view) {
 
@@ -53,7 +67,6 @@ public class InsertPostFragment extends Fragment {
 //                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.setAction(ACTION_GET_CONTENT);
                 resultLauncher.launch(intent);
-
 
 
 
@@ -89,6 +102,8 @@ public class InsertPostFragment extends Fragment {
 
               // /document/raw:/
 
+                if(result.getResultCode() == Activity.RESULT_OK) {
+
                     filePath = result.getData().getData().getPath();
                     filePath = filePath.substring(15);
 //                filePath = Environment.getExternalStorageDirectory().getAbsolutePath(); // 절대경로를 얻는 코드
@@ -98,6 +113,9 @@ public class InsertPostFragment extends Fragment {
 //                filePath = uri.getPath();
                     Log.d("###filePath###", filePath);
 //                Log.d("###",file);
+                }
+
+
 
             }
         });
@@ -123,10 +141,25 @@ public class InsertPostFragment extends Fragment {
 
 
 //        Toast.makeText(getContext(),"구현중인 기능입니다! (게시물 등록)",Toast.LENGTH_SHORT).show();
+
+
+
+
+                etpostTitle.setText("");
+                etpostText.setText("");
+                filePath = null;
+
+
             }
         });
 
 
         return view;
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+
     }
 }

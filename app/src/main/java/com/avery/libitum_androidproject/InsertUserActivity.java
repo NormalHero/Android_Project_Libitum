@@ -87,7 +87,7 @@ public class InsertUserActivity extends AppCompatActivity {
                     if(photoUri == null ){
                         data2 = filePath;
                     }else if(filePath == null){
-                        data2 = photoUri.getPath();
+                        data2 = photoUri.toString();
                     }
 
                     myDB.regist(id, pw,data1, data2);

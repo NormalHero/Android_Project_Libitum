@@ -2,15 +2,22 @@ package com.avery.libitum_androidproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.avery.libitum_androidproject.connectionAPI.MyDB;
+import com.avery.libitum_androidproject.support.PermissionSupport;
 
 public class introActivity extends AppCompatActivity {
        EditText etUserId,etUserPw;
+
+       private PermissionSupport permission;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +25,24 @@ public class introActivity extends AppCompatActivity {
         setContentView(R.layout.activity_intro);
         etUserId = findViewById(R.id.etUserId);
         etUserPw = findViewById(R.id.etUserPw);
+
+//        if(checkSelfPermission(Manifest.permission.CAMERA) == PackageManager.PERMISSION_DENIED){
+//            requestPermissions(new String[]{Manifest.permission.CAMERA}, 111);
+//
+//        }
+//
+//        // storage permission
+//
+//            if(checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+//                if(shouldShowRequestPermissionRationale(Manifest.permission.WRITE_EXTERNAL_STORAGE)) {
+//                    Toast.makeText(this, "외부 저장소 사용을 위해 읽기/쓰기 필요", Toast.LENGTH_SHORT).show();
+//                }
+//
+//                requestPermissions(new String[]
+//                        {Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.READ_EXTERNAL_STORAGE}, 2);
+//            }
+        permissionCheck();
+
 
       //  myDB.loginFlag=false;
 
@@ -66,4 +91,25 @@ public class introActivity extends AppCompatActivity {
 
 
     }
+
+
+
+    private  void permissionCheck(){
+
+
+        if(Build.VERSION.SDK_INT >= 23){
+
+            permission = new PermissionSupport(this,this);
+
+
+            if(!permission.checkPermission()){
+                permission.requestPermission();
+            }
+
+        }
+
+    }
+
+
+
 }

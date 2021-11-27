@@ -122,11 +122,13 @@ public class MyFeedFragment extends Fragment {
                         tvUserText.setText(list.get(i).getData1());
 
                         if (list.get(i).getData2() == null ) {
-                            uri = Uri.parse("storage/emulated/0/Download/defaultProfile.png");
+//                            uri = Uri.parse("storage/emulated/0/Download/defaultProfile.png");
+                            ivUserImg.setImageResource(R.drawable.profile);
                         }else {
                             uri = Uri.parse(list.get(i).getData2());
+                            ivUserImg.setImageURI(uri);
                         }
-                        ivUserImg.setImageURI(uri);
+
 
 
 

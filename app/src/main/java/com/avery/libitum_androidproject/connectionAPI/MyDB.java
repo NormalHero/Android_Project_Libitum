@@ -102,8 +102,8 @@ public class MyDB {
 
 
                 }else{
-//                    loginFlag = false;
-//                    Toast.makeText(activity, "로그인 실패",Toast.LENGTH_SHORT).show();
+
+                    Toast.makeText(activity, "로그인 실패",Toast.LENGTH_SHORT).show();
                 }
             }
 
